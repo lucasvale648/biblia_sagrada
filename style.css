@@ -1,0 +1,125 @@
+/* =========================
+   Reset básico e full screen
+========================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: black; /* fallback caso a imagem não carregue */
+}
+
+/* =========================
+   Body com flex centralizado
+========================= */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: url("pergaminho.png") no-repeat center center;
+    background-size: cover;
+
+    font-family: serif;
+    text-align: center;
+
+    /* Safe area para mobile (iPhone/Android) */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* =========================
+   Container central
+========================= */
+.container {
+    width: 90%;
+    max-width: 420px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centraliza horizontalmente todos os filhos */
+    justify-content: center; /* centraliza verticalmente dentro do container */
+}
+
+/* =========================
+   Títulos principais
+========================= */
+h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700; /* Bold */
+    font-size: 60px; /* BÍBLIA */
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700; /* Bold */
+    font-size: 35px; /* SAGRADA */
+    margin-top: -10px;
+}
+
+/* =========================
+   Versículo
+========================= */
+#versiculo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700; /* Bold */
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+/* =========================
+   Referência
+========================= */
+#referencia {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+/* =========================
+   Destaque de palavras
+========================= */
+.palavra {
+    padding: 3px;
+}
+
+.ativa {
+    background: #ecaf2b;
+    border-radius: 4px;
+}
+
+/* =========================
+   Botão com imagem
+========================= */
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background: transparent; /* só a imagem do botão */
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+button img {
+    display: block;
+    width: 120px; /* ajuste o tamanho da imagem do botão */
+    height: 120px;
+}
+
+/* Efeito de hover e clique */
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.95);
+}
