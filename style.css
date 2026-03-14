@@ -6,7 +6,8 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
-    background: black; /* fallback caso a imagem não carregue */
+    background: black;
+    overflow: hidden;
 }
 
 /* =========================
@@ -16,46 +17,86 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: url("pergaminho.png") no-repeat center center;
     background-size: cover;
-
     font-family: serif;
     text-align: center;
-
-    /* Safe area para mobile (iPhone/Android) */
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* =========================
    Container central
 ========================= */
 .container {
-    width: 90%;
-    max-width: 420px;
-
+    width: 92%;
+    max-width: 460px;
+    height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center; /* centraliza horizontalmente todos os filhos */
-    justify-content: center; /* centraliza verticalmente dentro do container */
+    align-items: center;
+    padding: 5px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* =========================
+   Área do conteúdo principal
+========================= */
+.conteudo-principal {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
 }
 
 /* =========================
    Títulos principais
 ========================= */
+.titulos-container {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 2px 0;
+    margin-top: 32px;
+}
+
 h1 {
     font-family: 'Cinzel', serif;
-    font-weight: 700; /* Bold */
-    font-size: 60px; /* BÍBLIA */
+    font-weight: 700;
+    font-size: 70px;
     margin: 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+    line-height: 0.9;
 }
 
 h2 {
     font-family: 'Cinzel', serif;
-    font-weight: 700; /* Bold */
-    font-size: 35px; /* SAGRADA */
-    margin-top: -10px;
+    font-weight: 700;
+    font-size: 42px;
+    margin: -5px 0 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    line-height: 1;
+}
+
+/* =========================
+   Área rolável do versículo
+========================= */
+.versiculo-container {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 2px 0;
+    padding-right: 5px;
 }
 
 /* =========================
@@ -63,11 +104,34 @@ h2 {
 ========================= */
 #versiculo {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 700; /* Bold */
+    font-weight: 700;
     font-style: italic;
-    font-size: 22px;
-    line-height: 1.7;
-    margin-top: 10px;
+    font-size: 26px;
+    line-height: 1.8;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#versiculo:empty {
+    display: none;
+}
+
+#versiculo::-webkit-scrollbar {
+    width: 6px;
+}
+
+#versiculo::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#versiculo::-webkit-scrollbar-thumb {
+    background: #ecaf2b;
+    border-radius: 10px;
 }
 
 /* =========================
@@ -75,51 +139,284 @@ h2 {
 ========================= */
 #referencia {
     font-weight: bold;
-    font-size: 18px;
-    margin-top: 30px;
+    font-size: 22px;
+    margin: 3px 0;
+    padding: 6px 18px;
+    background: rgba(236, 175, 43, 0.25);
+    border-radius: 30px;
+    border-left: 4px solid #ecaf2b;
+    border-right: 4px solid #ecaf2b;
+    letter-spacing: 1px;
+    display: none;
+    flex-shrink: 0;
+    margin-top: 60px;
+}
+
+#referencia.visivel {
+    display: inline-block;
 }
 
 /* =========================
    Destaque de palavras
 ========================= */
 .palavra {
-    padding: 3px;
+    padding: 4px;
+    transition: background-color 0.2s ease;
 }
 
 .ativa {
     background: #ecaf2b;
-    border-radius: 4px;
+    border-radius: 6px;
+    animation: pulse 0.3s ease;
+    font-weight: 800;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
 }
 
 /* =========================
-   Botão com imagem
+   Botões - CORRIGIDO!
 ========================= */
-button {
-    margin-top: 20px;
-    padding: 10px;
-    background: transparent; /* só a imagem do botão */
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
+.botoes-container {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0 2px 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 60px;
+}
 
+/* Botão de som - CORRIGIDO (sem feedback visual ao clicar) */
+#botao-som {
+    width: 65px;
+    height: 65px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    outline: none; /* Remove outline ao focar */
+    -webkit-tap-highlight-color: transparent; /* Remove highlight no mobile */
+    -webkit-touch-callout: none; /* Remove menu de contexto */
+    -webkit-user-select: none; /* Remove seleção */
+    user-select: none;
+}
 
+#botao-som i {
+    font-size: 38px;
+    color: #000000;
+}
+
+#botao-som:hover {
+    transform: scale(1.1);
+}
+
+#botao-som:active {
+    transform: scale(0.95);
+}
+
+/* Remove todos os estados de foco e clique */
+#botao-som:focus,
+#botao-som:focus-visible,
+#botao-som:focus-within {
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+/* Remove o efeito de clique padrão do mobile */
+#botao-som {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+/* Botão "Orar" */
+#botao {
+    padding: 20px;
+    background: transparent;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.1s ease, opacity 0.2s ease;
 }
 
-button img {
-    display: block;
-    width: 120px; /* ajuste o tamanho da imagem do botão */
-    height: 120px;
+#botao img {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.5));
 }
 
-/* Efeito de hover e clique */
-button:hover {
+#botao:hover {
     opacity: 0.9;
 }
 
-button:active {
+#botao:hover img {
+    transform: scale(1.05);
+}
+
+#botao:active img {
     transform: scale(0.95);
+}
+
+#botao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#botao:disabled img {
+    transform: scale(1);
+}
+
+/* Espaço vazio à direita para equilibrar (opcional) */
+.botoes-container::after {
+    content: '';
+    width: 65px;
+    height: 65px;
+    display: block;
+    visibility: hidden;
+}
+
+/* =========================
+   Rodapé
+========================= */
+.rodape {
+    flex-shrink: 0;
+    width: 100%;
+    text-align: center;
+    padding: 3px 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.3);
+    margin-top: 0;
+}
+
+.dica-print {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.dica-print span {
+    font-size: 20px;
+    animation: piscar 2s infinite;
+}
+
+@keyframes piscar {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* =========================
+   Responsividade
+========================= */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 58px;
+    }
+    
+    h2 {
+        font-size: 36px;
+    }
+    
+    #versiculo {
+        font-size: 24px;
+        padding: 10px;
+    }
+    
+    #referencia {
+        font-size: 20px;
+        padding: 5px 16px;
+    }
+    
+    #botao img {
+        width: 130px;
+        height: 130px;
+    }
+    
+    #botao-som {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+    }
+    
+    .botoes-container::after {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .botoes-container {
+        margin: 3px 0 2px 0;
+        padding: 0 8px;
+    }
+    
+    .rodape {
+        padding: 2px 0;
+    }
+    
+    .dica-print {
+        font-size: 13px;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+    
+    .dica-print span {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 48px;
+    }
+    
+    h2 {
+        font-size: 30px;
+    }
+    
+    #versiculo {
+        font-size: 22px;
+        padding: 8px;
+    }
+    
+    #botao img {
+        width: 110px;
+        height: 110px;
+    }
+    
+   
+    .botoes-container::after {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .botoes-container {
+        margin: 2px 0;
+        padding: 0 5px;
+    }
+    
+    .dica-print {
+        font-size: 12px;
+    }
+    
+    .dica-print span {
+        font-size: 16px;
+    }
 }
