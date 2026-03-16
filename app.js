@@ -18,7 +18,7 @@ referenciaDiv.classList.remove('visivel')
 loading.classList.add('ativo')
 setTimeout(() => {
     loading.classList.remove('ativo')
-}, 3000)
+}, 2500)
 
 // carregar vozes corretamente no celular
 function carregarVozes() {
