@@ -419,4 +419,24 @@ h2 {
     .dica-print span {
         font-size: 16px;
     }
+}/* =========================
+   Loading simples
+========================= */
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000000;
+    padding: 15px 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 9999;
+    display: none;
+  
+}
+
+#loading.ativo {
+    display: block;
 }

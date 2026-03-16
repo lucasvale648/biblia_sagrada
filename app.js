@@ -2,6 +2,7 @@ const botao = document.getElementById("botao")
 const botaoSom = document.getElementById("botao-som")
 const versiculoDiv = document.getElementById("versiculo")
 const referenciaDiv = document.getElementById("referencia")
+const loading = document.getElementById("loading")
 
 let vozes = []
 let falando = false
@@ -12,6 +13,12 @@ let utteranceAtual = null
 
 // Garantir que referência começa oculta
 referenciaDiv.classList.remove('visivel')
+
+// Mostrar loading por 3 segundos na primeira abertura
+loading.classList.add('ativo')
+setTimeout(() => {
+    loading.classList.remove('ativo')
+}, 2000)
 
 // carregar vozes corretamente no celular
 function carregarVozes() {
@@ -47,6 +54,7 @@ function toggleSom() {
         icon.className = 'fas fa-volume-mute'
     }
 }
+
 // Função para remover todos os destaques
 function removerDestaques() {
     document.querySelectorAll(".ativa").forEach(el => {
@@ -69,7 +77,7 @@ async function gerarVersiculo() {
 
         referenciaAtual = dados.reference
         referenciaDiv.innerText = referenciaAtual
-        referenciaDiv.classList.add('visivel') // MOSTRA A REFERÊNCIA
+        referenciaDiv.classList.add('visivel')
 
         versiculoAtual = dados.text
         mostrarVersiculo(dados.text)
