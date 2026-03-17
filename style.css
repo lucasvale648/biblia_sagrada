@@ -178,7 +178,7 @@ h2 {
 }
 
 /* =========================
-   Botões - CORRIGIDO!
+   Botões
 ========================= */
 .botoes-container {
     flex-shrink: 0;
@@ -187,12 +187,89 @@ h2 {
     justify-content: space-between;
     width: 100%;
     margin: 5px 0 2px 0;
-    padding: 0 10px;
+    padding: 0 5px;
     box-sizing: border-box;
     margin-bottom: 60px;
 }
 
-/* Botão de som - CORRIGIDO (sem feedback visual ao clicar) */
+/* =========================
+   Botão Ajude-nos
+========================= */
+.botao-ajude {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 14px;
+    transition: transform 0.1s ease;
+    width: 65px;
+    height: 65px;
+}
+
+.botao-ajude i {
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 2px;
+    transition: transform 0.1s ease;
+}
+
+.botao-ajude span {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap; /* Força ficar em uma linha */
+}
+
+.botao-ajude:hover {
+    transform: scale(1.1);
+}
+
+.botao-ajude:hover i {
+    transform: scale(1.1);
+    color: #000000;
+}
+
+.botao-ajude:active {
+    transform: scale(0.95);
+}
+
+/* Ajuste responsivo */
+@media (max-width: 480px) {
+    .botao-ajude {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .botao-ajude i {
+        font-size: 24px;
+        margin-bottom: 1px;
+    }
+    
+    .botao-ajude span {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 360px) {
+    .botao-ajude {
+        width: 80x;
+        height: 80px;
+    }
+    
+    .botao-ajude i {
+        font-size: 22px;
+    }
+    
+    .botao-ajude span {
+        font-size: 8px;
+    }
+}
+
+/* Botão de som */
 #botao-som {
     width: 65px;
     height: 65px;
@@ -204,10 +281,10 @@ h2 {
     align-items: center;
     justify-content: center;
     padding: 0;
-    outline: none; /* Remove outline ao focar */
-    -webkit-tap-highlight-color: transparent; /* Remove highlight no mobile */
-    -webkit-touch-callout: none; /* Remove menu de contexto */
-    -webkit-user-select: none; /* Remove seleção */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -224,7 +301,6 @@ h2 {
     transform: scale(0.95);
 }
 
-/* Remove todos os estados de foco e clique */
 #botao-som:focus,
 #botao-som:focus-visible,
 #botao-som:focus-within {
@@ -233,12 +309,10 @@ h2 {
     background: transparent;
 }
 
-/* Remove o efeito de clique padrão do mobile */
 #botao-som {
     -webkit-appearance: none;
     appearance: none;
 }
-
 
 /* Botão "Orar" */
 #botao {
@@ -280,15 +354,6 @@ h2 {
     transform: scale(1);
 }
 
-/* Espaço vazio à direita para equilibrar (opcional) */
-.botoes-container::after {
-    content: '';
-    width: 65px;
-    height: 65px;
-    display: block;
-    visibility: hidden;
-}
-
 /* =========================
    Rodapé
 ========================= */
@@ -325,6 +390,28 @@ h2 {
 }
 
 /* =========================
+   Loading simples
+========================= */
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000000;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 9999;
+    display: none;
+}
+
+#loading.ativo {
+    display: block;
+}
+
+/* =========================
    Responsividade
 ========================= */
 @media (max-width: 480px) {
@@ -351,15 +438,26 @@ h2 {
         height: 130px;
     }
     
+    .botao-ajude {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .botao-ajude i {
+        font-size: 24px;
+    }
+    
+    .botao-ajude span {
+        font-size: 10px;
+    }
+    
     #botao-som {
         width: 55px;
         height: 55px;
-        font-size: 26px;
     }
     
-    .botoes-container::after {
-        width: 55px;
-        height: 55px;
+    #botao-som i {
+        font-size: 32px;
     }
     
     .botoes-container {
@@ -379,6 +477,11 @@ h2 {
     
     .dica-print span {
         font-size: 18px;
+    }
+    
+    #loading {
+        font-size: 16px;
+        padding: 8px 16px;
     }
 }
 
@@ -401,8 +504,20 @@ h2 {
         height: 110px;
     }
     
-   
-    .botoes-container::after {
+    .botao-ajude {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .botao-ajude i {
+        font-size: 22px;
+    }
+    
+    .botao-ajude span {
+        font-size: 9px;
+    }
+    
+    #botao-som {
         width: 48px;
         height: 48px;
     }
@@ -419,24 +534,8 @@ h2 {
     .dica-print span {
         font-size: 16px;
     }
-}/* =========================
-   Loading simples
-========================= */
-#loading {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #000000;
-    padding: 15px 30px;
-    font-family: 'Cinzel', serif;
-    font-size: 20px;
-    font-weight: bold;
-    z-index: 9999;
-    display: none;
-  
-}
-
-#loading.ativo {
-    display: block;
+    
+    #loading {
+        font-size: 14px;
+    }
 }
