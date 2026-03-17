@@ -4,11 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+
+    <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@1,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome para ícones -->
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Ícones -->
+    <link rel="icon" href="icons/favicon.ico">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
     <title>Bíblia Sagrada</title>
 </head>
 
@@ -18,40 +30,32 @@
 
         <div class="conteudo-principal">
             
-            <!-- Títulos fixos no topo -->
             <div class="titulos-container">
                 <h1>BÍBLIA</h1>
                 <h2>SAGRADA</h2>
             </div>
 
-            <!-- Referência (aparece só quando tem versículo) -->
             <div id="referencia"></div>
 
-            <!-- Área rolável do versículo -->
             <div class="versiculo-container">
                 <div id="versiculo"></div>
             </div>
 
-                        <!-- Botões fixos no meio -->
             <div class="botoes-container">
-                <!-- Botão mutar/ativar som -->
                 <button id="botao-som" title="Ativar/Desativar som">
                     <i class="fas fa-volume-up"></i>
                 </button>
 
-                <!-- Botão principal "Orar" -->
                 <button id="botao">
                     <img src="orar_botao.png" alt="Orar">
                 </button>
 
-                <!-- Botão Ajude-nos -->
                 <a href="https://pagamentobiblia.vercel.app/" target="_blank" class="botao-ajude" id="botao-ajude" title="Ajude-nos">
                     <i class="fas fa-heart"></i>
                     <span>Ajude-nos!</span>
                 </a>
             </div>
 
-        <!-- Rodapé fixo com dica de print -->
         <div class="rodape">
             <div class="dica-print">
                 Tire um print para compartilhar
@@ -60,10 +64,16 @@
 
     </div>
 
-    <!-- Loading simples -->
     <div id="loading">CARREGANDO...</div>
 
     <script src="app.js"></script>
-</body>
 
+    <!-- Service Worker -->
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js");
+    }
+    </script>
+
+</body>
 </html>
