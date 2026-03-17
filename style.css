@@ -1,40 +1,29 @@
-/* =========================
-   Reset básico e full screen
-========================= */
+/* Reset e full screen */
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    background: black;
     overflow: hidden;
 }
 
-/* =========================
-   Body com flex centralizado
-========================= */
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("pergaminho.png") no-repeat center center;
-    background-size: cover;
+    background: black url("pergaminho.png") no-repeat center center / cover;
     font-family: serif;
     text-align: center;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     height: 100vh;
-    overflow: hidden;
 }
 
-/* =========================
-   Container central
-========================= */
+/* Container */
 .container {
     width: 92%;
     max-width: 460px;
     height: 100vh;
-    max-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,9 +32,7 @@ body {
     overflow: hidden;
 }
 
-/* =========================
-   Área do conteúdo principal
-========================= */
+/* Conteúdo principal */
 .conteudo-principal {
     flex: 1 1 auto;
     display: flex;
@@ -57,9 +44,7 @@ body {
     overflow: hidden;
 }
 
-/* =========================
-   Títulos principais
-========================= */
+/* Títulos */
 .titulos-container {
     flex-shrink: 0;
     width: 100%;
@@ -72,7 +57,7 @@ h1 {
     font-weight: 700;
     font-size: 70px;
     margin: 0;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.4);
     letter-spacing: 2px;
     line-height: 0.9;
 }
@@ -82,13 +67,11 @@ h2 {
     font-weight: 700;
     font-size: 42px;
     margin: -5px 0 0;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.4);
     line-height: 1;
 }
 
-/* =========================
-   Área rolável do versículo
-========================= */
+/* Versículo */
 .versiculo-container {
     flex: 1 1 auto;
     width: 100%;
@@ -99,9 +82,6 @@ h2 {
     padding-right: 5px;
 }
 
-/* =========================
-   Versículo
-========================= */
 #versiculo {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
@@ -109,40 +89,26 @@ h2 {
     font-size: 26px;
     line-height: 1.8;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.15);
     border-radius: 12px;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-#versiculo:empty {
-    display: none;
-}
+#versiculo:empty { display: none; }
 
-#versiculo::-webkit-scrollbar {
-    width: 6px;
-}
+#versiculo::-webkit-scrollbar { width: 6px; }
+#versiculo::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+#versiculo::-webkit-scrollbar-thumb { background: #ecaf2b; border-radius: 10px; }
 
-#versiculo::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-#versiculo::-webkit-scrollbar-thumb {
-    background: #ecaf2b;
-    border-radius: 10px;
-}
-
-/* =========================
-   Referência
-========================= */
+/* Referência */
 #referencia {
     font-weight: bold;
     font-size: 22px;
     margin: 3px 0;
     padding: 6px 18px;
-    background: rgba(236, 175, 43, 0.25);
+    background: rgba(236,175,43,0.25);
     border-radius: 30px;
     border-left: 4px solid #ecaf2b;
     border-right: 4px solid #ecaf2b;
@@ -152,17 +118,10 @@ h2 {
     margin-top: 60px;
 }
 
-#referencia.visivel {
-    display: inline-block;
-}
+#referencia.visivel { display: inline-block; }
 
-/* =========================
-   Destaque de palavras
-========================= */
-.palavra {
-    padding: 4px;
-    transition: background-color 0.2s ease;
-}
+/* Palavras */
+.palavra { padding: 4px; transition: background-color 0.2s ease; }
 
 .ativa {
     background: #ecaf2b;
@@ -172,36 +131,31 @@ h2 {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
+    0%, 100% { transform: scale(1); }
     50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
 }
 
-/* =========================
-   Botões
-========================= */
+/* Botões container */
 .botoes-container {
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin: 5px 0 2px 0;
+    margin: 5px 0 2px;
     padding: 0 5px;
     box-sizing: border-box;
     margin-bottom: 60px;
 }
 
-/* =========================
-   Botão Ajude-nos
-========================= */
+/* Botão Ajude-nos */
 .botao-ajude {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #000000;
+    color: #000;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
     font-size: 14px;
@@ -212,7 +166,7 @@ h2 {
 
 .botao-ajude i {
     font-size: 28px;
-    color: #000000;
+    color: #000;
     margin-bottom: 2px;
     transition: transform 0.1s ease;
 }
@@ -221,55 +175,13 @@ h2 {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    white-space: nowrap; /* Força ficar em uma linha */
+    white-space: nowrap;
 }
 
-.botao-ajude:hover {
-    transform: scale(1.1);
-}
+.botao-ajude:hover { transform: scale(1.1); }
+.botao-ajude:active { transform: scale(0.95); }
 
-.botao-ajude:hover i {
-    transform: scale(1.1);
-    color: #000000;
-}
-
-.botao-ajude:active {
-    transform: scale(0.95);
-}
-
-/* Ajuste responsivo */
-@media (max-width: 480px) {
-    .botao-ajude {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .botao-ajude i {
-        font-size: 24px;
-        margin-bottom: 1px;
-    }
-    
-    .botao-ajude span {
-        font-size: 9px;
-    }
-}
-
-@media (max-width: 360px) {
-    .botao-ajude {
-        width: 80x;
-        height: 80px;
-    }
-    
-    .botao-ajude i {
-        font-size: 22px;
-    }
-    
-    .botao-ajude span {
-        font-size: 8px;
-    }
-}
-
-/* Botão de som */
+/* Botão Som */
 #botao-som {
     width: 65px;
     height: 65px;
@@ -286,35 +198,20 @@ h2 {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-#botao-som i {
-    font-size: 38px;
-    color: #000000;
-}
-
-#botao-som:hover {
-    transform: scale(1.1);
-}
-
-#botao-som:active {
-    transform: scale(0.95);
-}
-
-#botao-som:focus,
-#botao-som:focus-visible,
-#botao-som:focus-within {
+#botao-som i { font-size: 38px; color: #000; }
+#botao-som:hover { transform: scale(1.1); }
+#botao-som:active { transform: scale(0.95); }
+#botao-som:focus, #botao-som:focus-visible, #botao-som:focus-within {
     outline: none;
     box-shadow: none;
     background: transparent;
 }
 
-#botao-som {
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-/* Botão "Orar" */
+/* Botão Orar */
 #botao {
     padding: 20px;
     background: transparent;
@@ -330,46 +227,27 @@ h2 {
 #botao img {
     width: 150px;
     height: 150px;
-    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
 }
 
-#botao:hover {
-    opacity: 0.9;
-}
+#botao:hover { opacity: 0.9; }
+#botao:hover img { transform: scale(1.05); }
+#botao:active img { transform: scale(0.95); }
+#botao:disabled { opacity: 0.5; cursor: not-allowed; }
 
-#botao:hover img {
-    transform: scale(1.05);
-}
-
-#botao:active img {
-    transform: scale(0.95);
-}
-
-#botao:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-#botao:disabled img {
-    transform: scale(1);
-}
-
-/* =========================
-   Rodapé
-========================= */
+/* Rodapé */
 .rodape {
     flex-shrink: 0;
     width: 100%;
     text-align: center;
     padding: 3px 0;
-    border-top: 2px solid rgba(0, 0, 0, 0.3);
-    margin-top: 0;
+    border-top: 2px solid rgba(0,0,0,0.3);
 }
 
 .dica-print {
     font-family: 'Cormorant Garamond', serif;
     font-size: 15px;
-    color: #000000;
+    color: #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -378,26 +256,20 @@ h2 {
     font-weight: 600;
 }
 
-.dica-print span {
-    font-size: 20px;
-    animation: piscar 2s infinite;
-}
+.dica-print span { font-size: 20px; animation: piscar 2s infinite; }
 
 @keyframes piscar {
-    0% { opacity: 0.5; }
+    0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
-    100% { opacity: 0.5; }
 }
 
-/* =========================
-   Loading simples
-========================= */
+/* Loading */
 #loading {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #000000;
+    color: #000;
     padding: 15px 30px;
     border-radius: 50px;
     font-family: 'Cinzel', serif;
@@ -407,135 +279,38 @@ h2 {
     display: none;
 }
 
-#loading.ativo {
-    display: block;
-}
+#loading.ativo { display: block; }
 
-/* =========================
-   Responsividade
-========================= */
+/* Responsividade */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 58px;
-    }
-    
-    h2 {
-        font-size: 36px;
-    }
-    
-    #versiculo {
-        font-size: 24px;
-        padding: 10px;
-    }
-    
-    #referencia {
-        font-size: 20px;
-        padding: 5px 16px;
-    }
-    
-    #botao img {
-        width: 130px;
-        height: 130px;
-    }
-    
-    .botao-ajude {
-        width: 55px;
-        height: 55px;
-    }
-    
-    .botao-ajude i {
-        font-size: 24px;
-    }
-    
-    .botao-ajude span {
-        font-size: 10px;
-    }
-    
-    #botao-som {
-        width: 55px;
-        height: 55px;
-    }
-    
-    #botao-som i {
-        font-size: 32px;
-    }
-    
-    .botoes-container {
-        margin: 3px 0 2px 0;
-        padding: 0 8px;
-    }
-    
-    .rodape {
-        padding: 2px 0;
-    }
-    
-    .dica-print {
-        font-size: 13px;
-        gap: 10px;
-        margin-bottom: 24px;
-    }
-    
-    .dica-print span {
-        font-size: 18px;
-    }
-    
-    #loading {
-        font-size: 16px;
-        padding: 8px 16px;
-    }
+    h1 { font-size: 58px; }
+    h2 { font-size: 36px; }
+    #versiculo { font-size: 24px; padding: 10px; }
+    #referencia { font-size: 20px; padding: 5px 16px; }
+    #botao img { width: 130px; height: 130px; }
+    .botao-ajude { width: 80px; height: 80px; }
+    .botao-ajude i { font-size: 24px; margin-bottom: 1px; }
+    .botao-ajude span { font-size: 9px; }
+    #botao-som { width: 55px; height: 55px; }
+    #botao-som i { font-size: 32px; }
+    .botoes-container { margin: 3px 0 2px; padding: 0 8px; }
+    .rodape { padding: 2px 0; }
+    .dica-print { font-size: 13px; gap: 10px; margin-bottom: 24px; }
+    .dica-print span { font-size: 18px; }
+    #loading { font-size: 16px; padding: 8px 16px; }
 }
 
 @media (max-width: 360px) {
-    h1 {
-        font-size: 48px;
-    }
-    
-    h2 {
-        font-size: 30px;
-    }
-    
-    #versiculo {
-        font-size: 22px;
-        padding: 8px;
-    }
-    
-    #botao img {
-        width: 110px;
-        height: 110px;
-    }
-    
-    .botao-ajude {
-        width: 48px;
-        height: 48px;
-    }
-    
-    .botao-ajude i {
-        font-size: 22px;
-    }
-    
-    .botao-ajude span {
-        font-size: 9px;
-    }
-    
-    #botao-som {
-        width: 48px;
-        height: 48px;
-    }
-    
-    .botoes-container {
-        margin: 2px 0;
-        padding: 0 5px;
-    }
-    
-    .dica-print {
-        font-size: 12px;
-    }
-    
-    .dica-print span {
-        font-size: 16px;
-    }
-    
-    #loading {
-        font-size: 14px;
-    }
+    h1 { font-size: 48px; }
+    h2 { font-size: 30px; }
+    #versiculo { font-size: 22px; padding: 8px; }
+    #botao img { width: 110px; height: 110px; }
+    .botao-ajude { width: 48px; height: 48px; }
+    .botao-ajude i { font-size: 22px; }
+    .botao-ajude span { font-size: 9px; }
+    #botao-som { width: 48px; height: 48px; }
+    .botoes-container { margin: 2px 0; padding: 0 5px; }
+    .dica-print { font-size: 12px; }
+    .dica-print span { font-size: 16px; }
+    #loading { font-size: 14px; }
 }
